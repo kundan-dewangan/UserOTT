@@ -29,7 +29,6 @@ const LoginScreen = () => {
             })
                 .then((response) => {
                     setList(response?.data);
-                    console.log('Response:', response.data);
                 })
                 .catch((error) => {
                     console.error('Error:', JSON.stringify(error));

@@ -1,25 +1,52 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import YouTubeCard from '../../components/Card'
 import { ScrollView } from 'react-native-gesture-handler'
+import axios from 'axios'
+import { headerPayload } from '../../utils/utils'
 
 const HomeScreen = () => {
 
-    const handleClick = () => {
-        console.log("click;;")
-    }  
+    const [list, setList] = useState([])
+
+    const handleClick = (url) => {
+        console.log("Url is::", url)
+    }
+
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const getData = async () => {
+        try {
+            console.log("inside :::")
+            axios.get(`${process.env.REACT_APP_URL}videos`, {
+                headers: headerPayload,
+            })
+                .then((response) => {
+                    setList(response?.data);
+                })
+                .catch((error) => {
+                    console.error('Error:', JSON.stringify(error));
+                });
+        } catch (err) {
+            console.log("Error::", err)
+            console.log("Error 22::", JSON.stringify(err))
+        }
+    }
 
     return (
         <View style={styles.container}>
-           
+
             <ScrollView>
-                {[1, 2, 3, 4, 5].map((item, index) => {
+                {list?.map((item, index) => {
                     return (<YouTubeCard
                         key={index}
-                        title="First Card"
-                        channel="Kundan"
-                        thumbnail="https://marketplace.canva.com/EAEqfS4X0Xw/1/0/1600w/canva-most-attractive-youtube-thumbnail-wK95f3XNRaM.jpg"
-                        onPress={handleClick} />)
+                        title={item?.title}
+                        thumbnail={item?.thumbnail}
+                        url={item?.url}
+                        onPress={()=> handleClick(item?.url)} />)
                 })}
             </ScrollView>
         </View>
@@ -32,6 +59,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        backgroundColor: '#222', // Dark background color
+
 
     }
 })

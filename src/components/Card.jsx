@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const YouTubeCard = ({ title, channel, thumbnail, onPress }) => {
+const YouTubeCard = ({ title, thumbnail, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image source={{ uri: thumbnail }} style={styles.thumbnail} />
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.channel}>{channel}</Text>
+        {/* <Text style={styles.channel}>{description}</Text> */}
       </View>
     </TouchableOpacity>
   );

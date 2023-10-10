@@ -22,20 +22,28 @@ const App = () => {
       <Stack.Navigator initialRouteName={auth ? 'Home' : 'Welcome'} >
         <Stack.Screen name="Home" component={HomeScreen} options={{
           headerRight: () => <>
-          <Logout/>
+            <Logout />
           </>,
+          headerTintColor: 'white',
+          
+          headerStyle: {
+            backgroundColor: '#222'
+          },
+          headerRightContainerStyle: {
+            marginRight: 10
+          }
         }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{
           headerLeft: () => <></>,
-          headerShown:false,
+          headerShown: false,
           // headerTransparent: true,
         }} />
-        <Stack.Screen name="Register" component={RegisterScreen}   options={{
-          headerShown:false
+        <Stack.Screen name="Register" component={RegisterScreen} options={{
+          headerShown: false
         }} />
-        <Stack.Screen name="Welcome" component={WelcomeScreen}  options={{
-          headerShown:false
-        }}/>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
+          headerShown: false
+        }} />
       </Stack.Navigator>
     </NavigationContainer >
   )
