@@ -8,6 +8,9 @@ export const loginCred = {
     password: 'Kundan@1234'
 }
 
+export const headerPayload = {
+    'Content-Type': 'application/json',
+};
 
 
 // Create (Put) an item in AsyncStorage

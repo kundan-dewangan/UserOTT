@@ -27,10 +27,12 @@ const App = () => {
         }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{
           headerLeft: () => <></>,
-          headerShown:true,
+          headerShown:false,
           // headerTransparent: true,
         }} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen}   options={{
+          headerShown:false
+        }} />
         <Stack.Screen name="Welcome" component={WelcomeScreen}  options={{
           headerShown:false
         }}/>

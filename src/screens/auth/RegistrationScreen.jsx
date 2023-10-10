@@ -1,7 +1,10 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import { headerPayload } from '../../utils/utils';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
@@ -11,16 +14,33 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
+
+  const [isLoading, setIsLoading] = useState(false)
+  const navigation = useNavigation();
+
   const handleRegister = (values) => {
-    // Perform registration logic here
-    console.log('Registration:', values);
+    setIsLoading(true)
+    try {
+      axios.post(`${process.env.REACT_APP_URL}users`,values)
+        .then((response) => {
+          console.log("responce is::", response.data)
+          Alert.alert("Registration Successfully")
+          navigation.navigate('Welcome')
+        })
+        .catch((error) => {
+          console.error('Error:', JSON.stringify(error));
+        });
+    } catch (err) {
+      console.log("Error::", err)
+    }
+    setIsLoading(false)
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
       <Formik
-        initialValues={{ fullName: '', email: '', password: '' }}
+        initialValues={{ fullName: '', email: '', password: '', role: 'user' }}
         validationSchema={validationSchema}
         onSubmit={handleRegister}
       >
@@ -57,7 +77,7 @@ const RegisterScreen = () => {
               <Text style={styles.errorText}>{errors.password}</Text>
             )}
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit} disabled={isLoading}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
           </>
@@ -75,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#222', // Dark background color
   },
   title: {
-    fontSize: 24,
+    fontSize: 50,
     color: '#fff', // White text color
     marginBottom: 20,
   },
@@ -88,11 +108,18 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
+    marginBottom: 10,
+    fontWeight: '600'
   },
   button: {
     backgroundColor: '#007aff', // Button background color
     padding: 10,
     borderRadius: 5,
+    flexDirection: 'row',
+    width: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
   },
   buttonText: {
     color: '#fff', // White text color

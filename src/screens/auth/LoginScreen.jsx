@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
-import { loginCred } from '../../utils/utils';
+import { headerPayload, loginCred } from '../../utils/utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
@@ -15,8 +16,6 @@ const validationSchema = Yup.object().shape({
 const LoginScreen = () => {
 
     const navigation = useNavigation();
-
- 
     const [list, setList] = useState([])
 
     useEffect(() => {
@@ -25,38 +24,27 @@ const LoginScreen = () => {
 
     const getData = async () => {
         try {
-            await fetch(`${process.env.REACT_APP_URL}users`, {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((res) => res.json())
-                .then((data) => {
-                    setList(data);
+            axios.get(`${process.env.REACT_APP_URL}users`, {
+                headers: headerPayload,
+            })
+                .then((response) => {
+                    setList(response?.data);
+                    console.log('Response:', response.data);
                 })
-                // .catch((err) => toast.error("Something wrong::" + err))
+                .catch((error) => {
+                    console.error('Error:', JSON.stringify(error));
+                });
         } catch (err) {
-            // toast.error("Something wrong::" + err);
             console.log("Error::", err)
         }
     }
-    
-
 
     const handleLogin = (values) => {
-        // Perform login logic here
-        console.log('Login:', values);
-        console.log('list:', list);
-
-        const checkAuth  = list?.some((item) => (item.email === values.email) && (item.password === values.password))
-        console.log("what is value:::", checkAuth)
+        const checkAuth = list?.some((item) => (item.email === values.email) && (item.password === values.password))
         if (checkAuth) {
-            AsyncStorage.setItem('isAuth', JSON.stringify(true))
             navigation.navigate('Home')
-            console.log("Success::")
         } else {
-            // toast.error("Invalid email and password")
-            console.log("Error::")
+            Alert.alert("Email and password is invalid")
         }
     };
 
@@ -97,12 +85,6 @@ const LoginScreen = () => {
                     </>
                 )}
             </Formik>
-
-            <Button
-                title="Go to Register"
-                onPress={() => navigation.navigate('Register')}
-                style={{ flex: 1 }}
-            />
         </View>
     );
 };
@@ -115,7 +97,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#222', // Dark background color
     },
     title: {
-        fontSize: 24,
+        fontSize: 50,
         color: '#fff', // White text color
         marginBottom: 20,
     },
@@ -128,11 +110,18 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: 'red',
+        marginBottom: 10,
+        fontWeight: '600'
     },
     button: {
         backgroundColor: '#007aff', // Button background color
         padding: 10,
         borderRadius: 5,
+        flexDirection: 'row',
+        width:'80%',
+        alignItems:'center',
+        justifyContent: 'center',
+        marginTop: 10
     },
     buttonText: {
         color: '#fff', // White text color
