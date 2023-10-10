@@ -4,13 +4,16 @@ import YouTubeCard from '../../components/Card'
 import { ScrollView } from 'react-native-gesture-handler'
 import axios from 'axios'
 import { headerPayload } from '../../utils/utils'
+import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
 
+    const navigation = useNavigation();
     const [list, setList] = useState([])
 
     const handleClick = (url) => {
         console.log("Url is::", url)
+        navigation.navigate('Detail')
     }
 
 

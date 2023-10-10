@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native'
 import Logout from './src/components/Logout';
 import WelcomeScreen from './src/screens/auth/WelcomeScreen';
+import DetailScreen from './src/screens/app/DetailScreen';
 
 const App = () => {
   const isAction = AsyncStorage.getItem('isAuth') || false
@@ -26,6 +27,18 @@ const App = () => {
           </>,
           headerTintColor: 'white',
           
+          headerStyle: {
+            backgroundColor: '#222'
+          },
+          headerRightContainerStyle: {
+            marginRight: 10
+          }
+        }} />
+        <Stack.Screen name="Detail" component={DetailScreen} options={{
+          headerRight: () => <>
+            <Logout />
+          </>,
+          headerTintColor: 'white',          
           headerStyle: {
             backgroundColor: '#222'
           },
