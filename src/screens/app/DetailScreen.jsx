@@ -11,8 +11,6 @@ export default function DetailScreen() {
   const route = useRoute();
   const data = route.params;
 
-  console.log("From Home screen:::", data)
-
   const onStateChange = useCallback((state) => {
     if (state === "ended") {
       setPlaying(false);
@@ -22,14 +20,14 @@ export default function DetailScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      {data?.title?.type === 'youtube' && <YoutubePlayer
+      {data?.type === 'youtube' && <YoutubePlayer
         height={300}
         play={playing}
-        videoId={"w2ifba5_1qI"}
+        videoId={data?.playId}
         onChangeState={onStateChange}
       />}
 
-      {data?.title?.type === 'vimeo' && <VimeoPlayer playId={data?.playId} />}
+      {data?.type === 'vimeo' && <VimeoPlayer playId={data?.playId} />}
       <View style={styles.container}>
         <ScrollView>
 
