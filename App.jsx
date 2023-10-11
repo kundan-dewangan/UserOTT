@@ -32,12 +32,14 @@ const App = () => {
           },
           headerRightContainerStyle: {
             marginRight: 10
-          }
+          },
+          
         }} />
         <Stack.Screen name="Detail" component={DetailScreen} options={{
           headerRight: () => <>
             <Logout />
           </>,
+          headerShown: false,
           headerTintColor: 'white',          
           headerStyle: {
             backgroundColor: '#222'

@@ -11,9 +11,9 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     const [list, setList] = useState([])
 
-    const handleClick = (url) => {
-        console.log("Url is::", url)
-        navigation.navigate('Detail')
+    const handleClick = (data) => {
+        console.log("Url is::", data)
+        navigation.navigate('Detail', data)
     }
 
 
@@ -49,7 +49,7 @@ const HomeScreen = () => {
                         title={item?.title}
                         thumbnail={item?.thumbnail}
                         url={item?.url}
-                        onPress={()=> handleClick(item?.url)} />)
+                        onPress={()=> handleClick(item)} />)
                 })}
             </ScrollView>
         </View>
