@@ -12,7 +12,6 @@ const HomeScreen = () => {
     const [list, setList] = useState([])
 
     const handleClick = (data) => {
-        console.log("Url is::", data)
         navigation.navigate('Detail', data)
     }
 

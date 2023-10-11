@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
-import { headerPayload, loginCred } from '../../utils/utils';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { headerPayload, useCounter } from '../../utils/utils';
 import axios from 'axios';
 
 // Define the validation schema using Yup
@@ -17,6 +16,7 @@ const LoginScreen = () => {
 
     const navigation = useNavigation();
     const [list, setList] = useState([])
+    const { login } = useCounter();
 
     useEffect(() => {
         getData();
@@ -41,6 +41,7 @@ const LoginScreen = () => {
     const handleLogin = (values) => {
         const checkAuth = list?.some((item) => (item.email === values.email) && (item.password === values.password))
         if (checkAuth) {
+            login()
             navigation.navigate('Home')
         } else {
             Alert.alert("Email and password is invalid")
@@ -51,7 +52,7 @@ const LoginScreen = () => {
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
             <Formik
-                initialValues={{ email: '', password: '' }}
+                initialValues={{ email: 'mohan@gmail.com', password: 'Mohan@1234' }}
                 validationSchema={validationSchema}
                 onSubmit={handleLogin}
             >

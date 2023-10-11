@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import { headerPayload } from '../../utils/utils';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({

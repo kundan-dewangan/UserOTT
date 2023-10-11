@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
-import React, { useState, useCallback, useRef } from "react";
-import { Button, View, Alert, StyleSheet, Text } from "react-native";
+import React, { useState, useCallback } from "react";
+import { View, Alert, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import YoutubePlayer from "react-native-youtube-iframe";
 import VimeoPlayer from "../../components/VimeoPlayer";
