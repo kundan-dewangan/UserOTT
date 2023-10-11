@@ -3,12 +3,13 @@ import React, { useState, useCallback, useRef } from "react";
 import { Button, View, Alert, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import YoutubePlayer from "react-native-youtube-iframe";
+import VimeoPlayer from "../../components/VimeoPlayer";
 
 export default function DetailScreen() {
   const [playing, setPlaying] = useState(true);
 
   const route = useRoute();
-  const  data  = route.params;
+  const data = route.params;
 
   console.log("From Home screen:::", data)
 
@@ -21,12 +22,14 @@ export default function DetailScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      <YoutubePlayer
+      {data?.title?.type === 'youtube' && <YoutubePlayer
         height={300}
         play={playing}
         videoId={"w2ifba5_1qI"}
         onChangeState={onStateChange}
-      />
+      />}
+
+      {data?.title?.type === 'vimeo' && <VimeoPlayer playId={data?.playId} />}
       <View style={styles.container}>
         <ScrollView>
 

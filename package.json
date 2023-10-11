@@ -24,6 +24,7 @@
     "react-native-reanimated": "^3.5.4",
     "react-native-safe-area-context": "^4.7.2",
     "react-native-screens": "^3.25.0",
+    "react-native-vimeo-iframe": "^1.2.1",
     "react-native-webview": "^13.6.2",
     "react-native-youtube-iframe": "^2.3.0",
     "react-redux": "^8.1.3",
