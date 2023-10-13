@@ -21,15 +21,15 @@ const WatchingForCarousel = ({list}) => {
             key={item.id}
             style={styles.card}
             onPress={() => {
-              navigation.navigate('TripDetails', {trip: item});
+              navigation.navigate('Detail', item);
             }}>
             <SharedElement id={`trip.${item.id}.image`} style={styles.media}>
-              <CardMedia source={item.image} borderBottomRadius />
+              <CardMedia source={item.thumbnail} borderBottomRadius />
             </SharedElement>
             <CardContent style={styles.content}>
               <View style={styles.titleBox}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.location}>{item.location}</Text>
+                <Text style={styles.location}>{item?.description?.length > 20 ? item?.description.slice(0, 20): item?.description}</Text>
               </View>
               {/* <FavoriteButton onPress={() => {}} /> */}
             </CardContent>

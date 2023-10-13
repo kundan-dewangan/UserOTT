@@ -21,13 +21,13 @@ const TrendingCarousel = ({list}) => {
             style={[styles.card]}
             shadowType="dark"
             onPress={() => {
-              navigation.navigate('TripDetails', {trip: item});
+              navigation.navigate('Detail', item);
             }}>
             {/* <CardFavoriteIcon active={false} onPress={() => {}} /> */}
             <SharedElement
               id={`trip.${item.id}.image`}
               style={StyleSheet.absoluteFillObject}>
-              <CardMedia source={item.image} borderBottomRadius />
+              <CardMedia source={item.thumbnail} borderBottomRadius />
             </SharedElement>
             <View style={styles.titleBox}>
               <Text style={styles.title}>{item.title}</Text>

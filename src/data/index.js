@@ -2,12 +2,14 @@ const USERS = {
     1: {
       id: 1,
       username: 'Alexia Jane',
-      avatar: require('../../assets/images/users/32.jpeg'),
+      // avatar: require('../../assets/images/users/32.jpeg'),
+      avatar: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
     },
     2: {
       id: 2,
       username: 'Jacky Depp',
-      avatar: require('../../assets/images/users/35.jpeg'),
+      // avatar: require('../../assets/images/users/35.jpeg'),
+      avatar: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
     },
   };
   
@@ -32,7 +34,8 @@ const USERS = {
     1: {
       id: 1,
       title: 'Argos in Cappadocia',
-      image: require('../../assets/images/hotels/cp-1.jpeg'),
+      // image: require('../../assets/images/hotels/cp-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Turkey, Cappadocia',
       rating: 9,
       pricePeerDay: '130$',
@@ -41,7 +44,8 @@ const USERS = {
     2: {
       id: 2,
       title: 'Sultan Cave Suites',
-      image: require('../../assets/images/hotels/cp-2.jpeg'),
+      // image: require('../../assets/images/hotels/cp-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Turkey, Cappadocia',
       rating: 9.3,
       pricePeerDay: '230$',
@@ -50,7 +54,8 @@ const USERS = {
     3: {
       id: 3,
       title: 'Villa Brunella',
-      image: require('../../assets/images/hotels/capri-1.jpeg'),
+      // image: require('../../assets/images/hotels/capri-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Italy, Capri',
       rating: 9.4,
       pricePeerDay: '280$',
@@ -59,7 +64,8 @@ const USERS = {
     4: {
       id: 4,
       title: 'Hotel La Floridiana',
-      image: require('../../assets/images/hotels/capri-2.jpeg'),
+      // image: require('../../assets/images/hotels/capri-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Italy, Capri',
       rating: 9.3,
       pricePeerDay: '190$',
@@ -68,7 +74,8 @@ const USERS = {
     5: {
       id: 5,
       title: "Le Taha'a by Pearl Resorts",
-      image: require('../../assets/images/hotels/polynesia-1.jpeg'),
+      // image: require('../../assets/images/hotels/polynesia-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Polynesia, Bora Bora',
       rating: 9.2,
       pricePeerDay: '250$',
@@ -77,7 +84,8 @@ const USERS = {
     6: {
       id: 6,
       title: 'Le Meridien Bora Bora',
-      image: require('../../assets/images/hotels/polynesia-2.jpeg'),
+      // image: require('../../assets/images/hotels/polynesia-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Polynesia, Bora Bora',
       rating: 9.4,
       pricePeerDay: '270$',
@@ -86,7 +94,8 @@ const USERS = {
     7: {
       id: 7,
       title: 'InterContinental Phuket Resort',
-      image: require('../../assets/images/hotels/phuket-1.jpg'),
+      // image: require('../../assets/images/hotels/phuket-1.jpg'),
+      image:"https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Thailand, Phuket',
       rating: 9.2,
       pricePeerDay: '210$',
@@ -95,7 +104,8 @@ const USERS = {
     8: {
       id: 8,
       title: 'The Nai Harn',
-      image: require('../../assets/images/hotels/phuket-2.jpeg'),
+      // image: require('../../assets/images/hotels/phuket-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Thailand, Phuket',
       rating: 9.4,
       pricePeerDay: '430$',
@@ -104,7 +114,8 @@ const USERS = {
     9: {
       id: 9,
       title: 'Hotel Poseidon',
-      image: require('../../assets/images/hotels/ac-1.jpeg'),
+      // image: require('../../assets/images/hotels/ac-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Italy, Amalfi Coast',
       rating: 9.2,
       pricePeerDay: '330$',
@@ -113,7 +124,8 @@ const USERS = {
     10: {
       id: 10,
       title: 'Le Agavi Hotel',
-      image: require('../../assets/images/hotels/ac-2.jpeg'),
+      // image: require('../../assets/images/hotels/ac-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Italy, Amalfi Coast',
       rating: 9.4,
       pricePeerDay: '350$',
@@ -122,7 +134,8 @@ const USERS = {
     11: {
       id: 11,
       title: 'Hotel Casa 1800 Granada',
-      image: require('../../assets/images/hotels/granada-1.jpeg'),
+      // image: require('../../assets/images/hotels/granada-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Spain, Granada',
       rating: 9.2,
       pricePeerDay: '230$',
@@ -131,7 +144,8 @@ const USERS = {
     12: {
       id: 12,
       title: 'Parador de Granada',
-      image: require('../../assets/images/hotels/granada-2.jpeg'),
+      // image: require('../../assets/images/hotels/granada-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Spain, Granada',
       rating: 9.4,
       pricePeerDay: '120$',
@@ -141,7 +155,8 @@ const USERS = {
     13: {
       id: 13,
       title: 'Konansou',
-      image: require('../../assets/images/hotels/cb-1.jpeg'),
+      // image: require('../../assets/images/hotels/cb-1.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Japan, Cherry blossoms',
       rating: 9.2,
       pricePeerDay: '740$',
@@ -150,7 +165,8 @@ const USERS = {
     14: {
       id: 14,
       title: 'Shuhokaku Kogetsu',
-      image: require('../../assets/images/hotels/cb-2.jpeg'),
+      // image: require('../../assets/images/hotels/cb-2.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       location: 'Japan, Cherry blossoms',
       rating: 9.4,
       pricePeerDay: '240$',
@@ -161,15 +177,18 @@ const USERS = {
   export const TOP_PLACES = [
     {
       id: 1,
-      image: require('../../assets/images/trips/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
+      // image: require('../../assets/images/trips/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Amalfi Coast',
       location: 'Italy',
       description:
         'The ultimate Amalfi Coast travel guide, where to stay, where to eat, and what areas to visit in the Amalfi Coast of Italy. Positano, Ravello, Amalfi and more',
       rating: 9.4,
       gallery: [
-        require('../../assets/images/trips/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'),
-        require('../../assets/images/trips/af933a359582704eee05be198e882be0.jpeg'),
+        // require('../../assets/images/trips/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'),
+        // require('../../assets/images/trips/af933a359582704eee05be198e882be0.jpeg'),
+        "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
+        "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       ],
       reviews: [REVIEWS[2], REVIEWS[1]],
       hotels: [HOTELS[9], HOTELS[10]],
@@ -177,7 +196,8 @@ const USERS = {
     },
     {
       id: 4,
-      image: require('../../assets/images/trips/922a0cb274208ccd234f6c14f2174b8b.jpeg'),
+      // image: require('../../assets/images/trips/922a0cb274208ccd234f6c14f2174b8b.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Granada',
       location: 'Spain',
       description:
@@ -190,7 +210,8 @@ const USERS = {
     },
     {
       id: 6,
-      image: require('../../assets/images/trips/e57a2a310330ee1d8928eb75d416a53d.jpeg'),
+      // image: require('../../assets/images/trips/e57a2a310330ee1d8928eb75d416a53d.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Cherry blossoms',
       location: 'Japan',
       description:
@@ -206,16 +227,20 @@ const USERS = {
   export const PLACES = [
     {
       id: 5,
-      image: require('../../assets/images/trips/645d5f28e26c7de2a280f71db15c2141.jpeg'),
+      // image: require('../../assets/images/trips/645d5f28e26c7de2a280f71db15c2141.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Cappadocia',
       location: 'Turkey',
       description:
         "Cappadocia's landscape includes dramatic expanses of soft volcanic rock, shaped by erosion into towers, cones, valleys, and caves. Rock-cut churches and underground tunnel complexes from the Byzantine and Islamic eras are scattered throughout the countryside.",
       rating: 9.2,
       gallery: [
-        require('../../assets/images/trips/4c73f37e70dded978374960fb29360f2.jpeg'),
-        require('../../assets/images/trips/55608c7000bb15d24ee022f3d3f0bf8a.jpeg'),
-        require('../../assets/images/trips/c68a4484f89d0c087ebdaa43629d2a7a.jpeg'),
+        // require('../../assets/images/trips/4c73f37e70dded978374960fb29360f2.jpeg'),
+        // require('../../assets/images/trips/55608c7000bb15d24ee022f3d3f0bf8a.jpeg'),
+        // require('../../assets/images/trips/c68a4484f89d0c087ebdaa43629d2a7a.jpeg'),
+        "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
+        "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
+        "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       ],
       reviews: [REVIEWS[1], REVIEWS[2]],
       hotels: [HOTELS[1], HOTELS[2]],
@@ -223,7 +248,8 @@ const USERS = {
     },
     {
       id: 2,
-      image: require('../../assets/images/trips/eea622430834cb64b900c2f03e5be6b8.jpeg'),
+      // image: require('../../assets/images/trips/eea622430834cb64b900c2f03e5be6b8.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Capri',
       location: 'Italy',
       description:
@@ -236,7 +262,8 @@ const USERS = {
     },
     {
       id: 3,
-      image: require('../../assets/images/trips/0e627c12c05e4dd93ab122d618ea7849.jpeg'),
+      // image: require('../../assets/images/trips/0e627c12c05e4dd93ab122d618ea7849.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Bora Bora',
       location: 'Polynesia',
       description:
@@ -249,7 +276,8 @@ const USERS = {
     },
     {
       id: 7,
-      image: require('../../assets/images/trips/c2dcbb54ca9316831b0f6ed4d4136dda.jpeg'),
+      // image: require('../../assets/images/trips/c2dcbb54ca9316831b0f6ed4d4136dda.jpeg'),
+      image: "https://us.123rf.com/450wm/vpastushenko/vpastushenko2309/vpastushenko230903775/212295646-couple-standing-in-front-of-heart-shaped-tree-with-pink-flowers-generative-ai.jpg?ver=6",
       title: 'Phuket',
       location: 'Thailand',
       description:

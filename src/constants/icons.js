@@ -8,6 +8,7 @@ const ArrowLeft = require('../../assets/icons/Arrow_Left.png');
 const Location = require('../../assets/icons/Location.png');
 const Filter = require('../../assets/icons/Filter.png');
 const Back = require('../../assets/icons/Back.png');
+const ArrowRight = require('../../assets/icons/Arrow_Right.png');
 
 export default {
   Home,
@@ -20,4 +21,5 @@ export default {
   Location,
   Filter,
   Back,
+  ArrowRight,
 };

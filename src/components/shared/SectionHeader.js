@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, Text, View, StyleSheet} from 'react-native';
-import {sizes, spacing} from '../../constants/theme';
+import { Button, Text, View, StyleSheet, Image } from 'react-native';
+import { sizes, spacing } from '../../constants/theme';
+import Icon from './Icon';
 
 const SectionHeader = ({
   title,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: sizes.h2,
     fontWeight: 'bold',
-    color:'white'
+    color: 'white'
   },
 });
 

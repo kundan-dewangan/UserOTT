@@ -11,11 +11,19 @@ import SectionHeader from '../../components/shared/SectionHeader'
 import MyListCarousel from '../../components/Home/MyListCarousel'
 import TrendingCarousel from '../../components/Home/TrendingCarousel'
 import WatchingForCarousel from '../../components/Home/WatchingForCarousel'
+import CrimeChroniclesCarousel from '../../components/Home/CrimeChroniclesCarousel'
+import AdventureEscapadesCarousle from '../../components/Home/AdventureEscapadesCarousle'
 
 const HomeScreen = () => {
 
     const navigation = useNavigation();
     const [list, setList] = useState([])
+    const [popularGenreList, setPopularGenreList] = useState([])
+    const [horrorMysList, setHorrorMysList] = useState([])
+    const [musicManiaList, setMusicManiaList] = useState([])
+    const [sciFiList, setSciFiList] = useState([])
+    const [crimeChroList, setCrimeChroList] = useState([])
+    const [adventureEscList, setAdventureEscList] = useState([])
 
     const handleClick = (data) => {
         navigation.navigate('Detail', data)
@@ -34,6 +42,18 @@ const HomeScreen = () => {
             })
                 .then((response) => {
                     setList(response?.data);
+                    const popular = response?.data.filter((item)=> item.genre === 'Popular Genres')
+                    const horrorMys = response?.data.filter((item)=> item.genre === 'Horror Hysteria')
+                    const musicMan = response?.data.filter((item)=> item.genre === 'Music Mania')
+                    const sciFi = response?.data.filter((item)=> item.genre === 'Sci-Fi Spectacles')
+                    const scrimeChro = response?.data.filter((item)=> item.genre === 'Crime Chronicles')
+                    const adventureEsc = response?.data.filter((item)=> item.genre === 'Adventure Escapades')
+                    setPopularGenreList(popular)
+                    setHorrorMysList(horrorMys)
+                    setMusicManiaList(musicMan)
+                    setSciFiList(sciFi)
+                    setCrimeChroList(scrimeChro)
+                    setAdventureEscList(adventureEsc)
                 })
                 .catch((error) => {
                     console.error('Error:', JSON.stringify(error));
@@ -50,35 +70,58 @@ const HomeScreen = () => {
 
             <ScrollView>
                 <SectionHeader
-                    title="Only on OTT"
+                    title="Popular Genres"
                     buttonTitle="See All"
-                    onPress={() => { }}
+                    onPress={false}
                 />
-                <TopPlacesCarousel list={TOP_PLACES} />
+                <TopPlacesCarousel list={popularGenreList} />
 
                 <SectionHeader
-                    title="My List"
+                    title="Music Mania"
                     buttonTitle=""
                     onPress={false}
                 />
-                <MyListCarousel list={TOP_PLACES} />
+                <MyListCarousel list={musicManiaList} />
                 
                 
                 <SectionHeader
-                    title="Trending on OTT"
+                    title="Horror Hysteria"
                     buttonTitle=""
                     onPress={false}
                 />
-                <TrendingCarousel list={TOP_PLACES} />
+                <TrendingCarousel list={horrorMysList} />
 
 
                 <SectionHeader
-                    title="Watching for you"
+                    title="Sci-Fi Spectacles"
                     buttonTitle=""
                     onPress={false}
                 />
-                <WatchingForCarousel list={PLACES} />
+                <WatchingForCarousel list={sciFiList} />
 
+
+                <SectionHeader
+                    title="Adventure Escapades"
+                    buttonTitle=""
+                    onPress={false}
+                />
+                <AdventureEscapadesCarousle list={adventureEscList} />
+
+
+                <SectionHeader
+                    title="Crime Chronicles"
+                    buttonTitle=""
+                    onPress={false}
+                />
+                <CrimeChroniclesCarousel list={crimeChroList} />
+
+
+                {/* <SectionHeader
+                    title="All List"
+                    buttonTitle=""
+                    onPress={false}
+                />
+                <Text>  </Text>
                 {list?.map((item, index) => {
                     return (<YouTubeCard
                         key={index}
@@ -86,7 +129,8 @@ const HomeScreen = () => {
                         thumbnail={item?.thumbnail}
                         url={item?.url}
                         onPress={() => handleClick(item)} />)
-                })}
+                })} */}
+
             </ScrollView>
         </View>
     )

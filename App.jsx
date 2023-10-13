@@ -31,6 +31,7 @@ const App = () => {
             headerRightContainerStyle: {
               marginRight: 20
             },
+            headerLeft: null,
             headerRight: () =>  <Logout />,
             headerTintColor: 'white',
 

@@ -8,9 +8,9 @@ import Card from '../shared/Card/Card';
 import CardMedia from '../shared/Card/CardMedia';
 import CardFavoriteIcon from '../shared/Card/CardFavoriteIcon';
 
-const CARD_HEIGHT = 200;
+const CARD_HEIGHT = 300;
 
-const TopPlacesCarousel = ({list}) => {
+const CrimeChroniclesCarousel = ({list}) => {
   const navigation = useNavigation();
   return (
     <Carousel
@@ -18,19 +18,19 @@ const TopPlacesCarousel = ({list}) => {
       renderItem={({item, style}) => {
         return (
           <Card
-            style={[styles.card, style]}
+            style={[styles.card]}
             shadowType="dark"
             onPress={() => {
               navigation.navigate('Detail', item);
             }}>
-            <CardFavoriteIcon active={false} onPress={() => {}} />
+            {/* <CardFavoriteIcon active={false} onPress={() => {}} /> */}
             <SharedElement
               id={`trip.${item.id}.image`}
               style={StyleSheet.absoluteFillObject}>
-              <CardMedia source={item?.thumbnail} borderBottomRadius />
+              <CardMedia source={item.thumbnail} borderBottomRadius />
             </SharedElement>
             <View style={styles.titleBox}>
-              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.title}>{item?.title?.length > 20 ? item?.title.slice(0, 20): item?.title}</Text>
               {/* <Text style={styles.location}>{item.location}</Text> */}
             </View>
           </Card>
@@ -43,7 +43,7 @@ const TopPlacesCarousel = ({list}) => {
 const styles = StyleSheet.create({
   card: {
     height: CARD_HEIGHT,
-    left: -20
+    marginRight: 10
   },
   titleBox: {
     position: 'absolute',
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     left: 16,
   },
   title: {
-    fontSize: sizes.h2,
+    fontSize: sizes.h3,
     fontWeight: 'bold',
     color: colors.white,
   },
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TopPlacesCarousel;
+export default CrimeChroniclesCarousel;

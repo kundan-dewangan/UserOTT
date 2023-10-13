@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, Text} from 'react-native';
 import {sizes} from '../../../constants/theme';
 
 const CardMedia = ({source, borderBottomRadius = false}) => {
@@ -8,7 +8,7 @@ const CardMedia = ({source, borderBottomRadius = false}) => {
       style={[styles.media].concat(
         borderBottomRadius ? styles.borderBottomRadius : null,
       )}>
-      <Image style={styles.image} source={source} />
+      <Image style={styles.image} source={{uri:source}} />
     </View>
   );
 };
