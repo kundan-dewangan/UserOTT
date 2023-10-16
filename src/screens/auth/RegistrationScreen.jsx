@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
@@ -37,6 +37,10 @@ const RegisterScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../../assets/register.png')} // Replace with your image source
+        style={styles.image}
+      />
       <Text style={styles.title}>Register</Text>
       <Formik
         initialValues={{ fullName: '', email: '', password: '', role: 'user' }}
@@ -92,6 +96,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#222', // Dark background color
+  },
+  image: {
+    width: 500,
+    height: 300,
+    marginBottom: 20,
   },
   title: {
     fontSize: 50,

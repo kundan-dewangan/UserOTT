@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
     <View style={styles.container}>
       {/* Image */}
       <Image
-        source={require('../../assets/bb.png')} // Replace with your image source
+        source={require('../../assets/welcome.png')} // Replace with your image source
         style={styles.image}
       />
 

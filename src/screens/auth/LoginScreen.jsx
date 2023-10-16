@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
@@ -50,6 +50,10 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Image
+                source={require('../../assets/login.png')} // Replace with your image source
+                style={styles.image}
+            />
             <Text style={styles.title}>Login</Text>
             <Formik
                 initialValues={{ email: 'mohan@gmail.com', password: 'Mohan@1234' }}
@@ -96,6 +100,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#222', // Dark background color
     },
+    image: {
+        width: 500,
+        height: 300,
+        marginBottom: 20,
+    },
     title: {
         fontSize: 50,
         color: '#fff', // White text color
@@ -118,8 +127,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         flexDirection: 'row',
-        width:'80%',
-        alignItems:'center',
+        width: '80%',
+        alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10
     },
