@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
     <View style={styles.container}>
       {/* Image */}
       <Image
-        source={require('../../assets/aa.png')} // Replace with your image source
+        source={require('../../assets/bb.png')} // Replace with your image source
         style={styles.image}
       />
 
@@ -40,15 +40,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#222', // Dark background color
   },
   image: {
-    width: 300,
+    width: 500,
     height: 300,
-    borderRadius: 150,
+    // borderRadius: 150,
     marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     color: '#fff', // White text color
     marginBottom: 10,
+    fontWeight:'600'
   },
   description: {
     fontSize: 16,
