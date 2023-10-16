@@ -10,7 +10,7 @@ import CardFavoriteIcon from '../shared/Card/CardFavoriteIcon';
 
 const CARD_HEIGHT = 200;
 
-const TopPlacesCarousel = ({list}) => {
+const TopPlacesCarousel = ({list, favChangeHandler}) => {
   const navigation = useNavigation();
   return (
     <Carousel
@@ -23,7 +23,7 @@ const TopPlacesCarousel = ({list}) => {
             onPress={() => {
               navigation.navigate('Detail', item);
             }}>
-            <CardFavoriteIcon active={false} onPress={() => {}} />
+            <CardFavoriteIcon active={item.isFav} onPress={() => favChangeHandler(item)} />
             <SharedElement
               id={`trip.${item.id}.image`}
               style={StyleSheet.absoluteFillObject}>

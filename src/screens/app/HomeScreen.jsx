@@ -42,7 +42,7 @@ const HomeScreen = () => {
             })
                 .then((response) => {
                     setList(response?.data);
-                    const popular = response?.data.filter((item)=> item.genre === 'Popular Genres')
+                    const popular = response?.data.filter((item)=> item.genre === 'Popular Genres')?.map(item => ({...item, isFav : false}))
                     const horrorMys = response?.data.filter((item)=> item.genre === 'Horror Hysteria')
                     const musicMan = response?.data.filter((item)=> item.genre === 'Music Mania')
                     const sciFi = response?.data.filter((item)=> item.genre === 'Sci-Fi Spectacles')
@@ -64,6 +64,16 @@ const HomeScreen = () => {
         }
     }
 
+    const favChangeHandler = (data) => {
+        const popular = popularGenreList.map((item) => {
+            if(item.id === data.id){
+                item.isFav = item.isFav ? false : true;
+            }
+            return item;
+        })
+        setPopularGenreList(popular)
+    }
+
     return (
         <View style={styles.container}>
 
@@ -74,7 +84,7 @@ const HomeScreen = () => {
                     buttonTitle="See All"
                     onPress={false}
                 />
-                <TopPlacesCarousel list={popularGenreList} />
+                <TopPlacesCarousel list={popularGenreList} favChangeHandler={favChangeHandler} />
 
                 <SectionHeader
                     title="Music Mania"
