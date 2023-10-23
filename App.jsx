@@ -9,6 +9,7 @@ import Logout from './src/components/Logout';
 import WelcomeScreen from './src/screens/auth/WelcomeScreen';
 import DetailScreen from './src/screens/app/DetailScreen';
 import { AuthContext } from './src/context/AuthContext';
+import DrawerNavigator from './src/components/DrawerNavigator';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -27,7 +28,7 @@ const App = () => {
     <AuthContext.Provider value={{ isAuth, login, logout }}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName={isAuth ? 'Home' : 'Welcome'} >
-          <Stack.Screen name="Home" component={HomeScreen} options={{
+          <Stack.Screen name="Home" component={DrawerNavigator} options={{
             headerRightContainerStyle: {
               marginRight: 20
             },
@@ -38,6 +39,7 @@ const App = () => {
             headerStyle: {
               backgroundColor: '#222'
             },
+            headerShown: false,
 
           }} />
           <Stack.Screen name="Detail" component={DetailScreen} options={{

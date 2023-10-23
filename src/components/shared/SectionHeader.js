@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.l,
   },
   title: {
-    fontSize: sizes.h2,
+    fontSize: sizes.h3,
     fontWeight: 'bold',
     color: 'white'
   },

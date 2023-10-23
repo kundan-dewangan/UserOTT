@@ -29,7 +29,7 @@ const WatchingForCarousel = ({list}) => {
             <CardContent style={styles.content}>
               <View style={styles.titleBox}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.location}>{item?.description?.length > 20 ? item?.description.slice(0, 20): item?.description}</Text>
+                <Text style={styles.location}>{item?.description?.length > 10 ? item?.description.slice(0, 10) + "...": item?.description}</Text>
               </View>
               {/* <FavoriteButton onPress={() => {}} /> */}
             </CardContent>

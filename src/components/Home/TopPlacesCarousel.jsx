@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     left: 16,
   },
   title: {
-    fontSize: sizes.h2,
+    fontSize: sizes.h3,
     fontWeight: 'bold',
     color: colors.white,
   },

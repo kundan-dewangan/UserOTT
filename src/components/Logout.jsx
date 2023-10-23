@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useCounter } from '../utils/utils';
 
@@ -12,14 +12,19 @@ const Logout = () => {
         navigation.navigate('Welcome');
     }
 
+    useEffect(() => {
+        logoutHandler()
+    }, [])
+
+
     return (
         <View style={styles.container}>
-            <Button
+            {/* <Button
                 title="Logout"
                 onPress={logoutHandler}
                 style={styles.btn}
             />
-            <Text>    </Text>
+            <Text>    </Text> */}
         </View>
     )
 }
