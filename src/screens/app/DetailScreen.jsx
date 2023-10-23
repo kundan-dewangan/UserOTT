@@ -32,7 +32,7 @@ export default function DetailScreen() {
     Orientation.lockToLandscape();
   };
   const onFullScreenChange = (state) => {
-    if(state){
+    if (state) {
       setOrientationToLandscape()
     } else {
       setOrientationToPortrait();

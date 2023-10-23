@@ -20,10 +20,10 @@ const HomeScreen = () => {
     const [list, setList] = useState([])
     const [popularGenreList, setPopularGenreList] = useState([])
     const [horrorMysList, setHorrorMysList] = useState([])
-    const [musicManiaList, setMusicManiaList] = useState([])
+    // const [musicManiaList, setMusicManiaList] = useState([])
     const [sciFiList, setSciFiList] = useState([])
-    const [crimeChroList, setCrimeChroList] = useState([])
-    const [adventureEscList, setAdventureEscList] = useState([])
+    // const [crimeChroList, setCrimeChroList] = useState([])
+    // const [adventureEscList, setAdventureEscList] = useState([])
 
     const handleClick = (data) => {
         navigation.navigate('Detail', data)
@@ -44,16 +44,16 @@ const HomeScreen = () => {
                     setList(response?.data);
                     const popular = response?.data.filter((item)=> item.genre === 'Popular Genres')?.map(item => ({...item, isFav : false}))
                     const horrorMys = response?.data.filter((item)=> item.genre === 'Horror Hysteria')
-                    const musicMan = response?.data.filter((item)=> item.genre === 'Music Mania')
-                    const sciFi = response?.data.filter((item)=> item.genre === 'Sci-Fi Spectacles')
-                    const scrimeChro = response?.data.filter((item)=> item.genre === 'Crime Chronicles')
-                    const adventureEsc = response?.data.filter((item)=> item.genre === 'Adventure Escapades')
+                    // const musicMan = response?.data.filter((item)=> item.genre === 'Music Mania')
+                    const sciFi = response?.data.filter((item)=>( item.genre === 'Sci-Fi Spectacles' || item.genre === 'Music Mania' ||  item.genre === 'Crime Chronicles' || item.genre === 'Adventure Escapades'))
+                    // const scrimeChro = response?.data.filter((item)=> item.genre === 'Crime Chronicles')
+                    // const adventureEsc = response?.data.filter((item)=> item.genre === 'Adventure Escapades')
                     setPopularGenreList(popular)
                     setHorrorMysList(horrorMys)
-                    setMusicManiaList(musicMan)
+                    // setMusicManiaList(musicMan)
                     setSciFiList(sciFi)
-                    setCrimeChroList(scrimeChro)
-                    setAdventureEscList(adventureEsc)
+                    // setCrimeChroList(scrimeChro)
+                    // setAdventureEscList(adventureEsc)
                 })
                 .catch((error) => {
                     console.error('Error:', JSON.stringify(error));
@@ -86,12 +86,12 @@ const HomeScreen = () => {
                 />
                 <TopPlacesCarousel list={popularGenreList} favChangeHandler={favChangeHandler} />
 
-                <SectionHeader
+                {/* <SectionHeader
                     title="Music Mania"
                     buttonTitle=""
                     onPress={false}
                 />
-                <MyListCarousel list={musicManiaList} />
+                <MyListCarousel list={musicManiaList} /> */}
                 
                 
                 <SectionHeader
@@ -110,20 +110,20 @@ const HomeScreen = () => {
                 <WatchingForCarousel list={sciFiList} />
 
 
-                <SectionHeader
+                {/* <SectionHeader
                     title="Adventure Escapades"
                     buttonTitle=""
                     onPress={false}
                 />
-                <AdventureEscapadesCarousle list={adventureEscList} />
+                <AdventureEscapadesCarousle list={adventureEscList} /> */}
 
 
-                <SectionHeader
+                {/* <SectionHeader
                     title="Crime Chronicles"
                     buttonTitle=""
                     onPress={false}
                 />
-                <CrimeChroniclesCarousel list={crimeChroList} />
+                <CrimeChroniclesCarousel list={crimeChroList} /> */}
 
 
                 {/* <SectionHeader

@@ -4,23 +4,30 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required('Full Name is required'),
+  fullName: Yup.string().required('Full Name is required').min(2,'Full Name should be 2 character long'),
   email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().required('Password is required'),
+  password: Yup.string().required('Password is required').matches(
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{6,}$/,
+    'Password must include at least one lowercase letter, one uppercase letter, one number, and one special character'
+  ),
 });
 
 const RegisterScreen = () => {
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigation = useNavigation();
 
   const handleRegister = (values) => {
     setIsLoading(true)
     try {
-      axios.post(`${process.env.REACT_APP_URL}users`,values)
+      axios.post(`${process.env.REACT_APP_URL}users`, values)
         .then((response) => {
           console.log("responce is::", response.data)
           Alert.alert("Registration Successfully")
@@ -41,7 +48,8 @@ const RegisterScreen = () => {
         source={require('../../assets/register.png')} // Replace with your image source
         style={styles.image}
       />
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Sign Up</Text>
+      <Text style={styles.description}>Sign Up as a New User</Text>
       <Formik
         initialValues={{ fullName: '', email: '', password: '', role: 'user' }}
         validationSchema={validationSchema}
@@ -69,20 +77,37 @@ const RegisterScreen = () => {
               <Text style={styles.errorText}>{errors.email}</Text>
             )}
 
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry
-              onChangeText={handleChange('password')}
-              value={values.password}
-            />
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={[styles.input, styles.passwordInput]}
+                placeholder="Password"
+                secureTextEntry={!showPassword}
+                onChangeText={handleChange('password')}
+                value={values.password}
+              />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.eyeIcon}
+              >
+                <Icon name={showPassword ? 'eye' : 'eye-slash'} size={20} />
+              </TouchableOpacity>
+            </View>
             {touched.password && errors.password && (
               <Text style={styles.errorText}>{errors.password}</Text>
             )}
 
             <TouchableOpacity style={styles.button} onPress={handleSubmit} disabled={isLoading}>
-              <Text style={styles.buttonText}>Register</Text>
+              <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
+
+            <View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+              >
+                <Text style={styles.alreadyHave}>Already have an account? <Text style={styles.loginCtn}>Login</Text></Text>
+              </TouchableOpacity>
+            </View>
+
           </>
         )}
       </Formik>
@@ -105,6 +130,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 50,
     color: '#fff', // White text color
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 16,
+    color: '#f2f2f2', // White text color
     marginBottom: 20,
   },
   input: {
@@ -134,6 +164,31 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 60,
+    width: '80%'
+  },
+  passwordInput: {
+    flex: 1,
+    padding: 10,
+  },
+  eyeIcon: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    position: 'absolute',
+    alignItems: 'center',
+    right: 0,
+  },
+  alreadyHave:{
+    color: 'white',
+    fontSize:16,
+    marginTop: 20
+  },
+  loginCtn: {
+    color: 'blue',
+  }
 });
 
 export default RegisterScreen;

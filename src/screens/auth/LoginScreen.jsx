@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 import { headerPayload, useCounter } from '../../utils/utils';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
@@ -16,6 +17,8 @@ const LoginScreen = () => {
 
     const navigation = useNavigation();
     const [list, setList] = useState([])
+    const [showPassword, setShowPassword] = useState(false);
+
     const { login } = useCounter();
 
     useEffect(() => {
@@ -55,6 +58,7 @@ const LoginScreen = () => {
                 style={styles.image}
             />
             <Text style={styles.title}>Login</Text>
+            <Text style={styles.description}>Please sign in to continue</Text>
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
@@ -71,14 +75,21 @@ const LoginScreen = () => {
                         {touched.email && errors.email && (
                             <Text style={styles.errorText}>{errors.email}</Text>
                         )}
-
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Password"
-                            secureTextEntry
-                            onChangeText={handleChange('password')}
-                            value={values.password}
-                        />
+                        <View style={styles.passwordContainer}>
+                            <TextInput
+                                style={[styles.input, styles.passwordInput]}
+                                placeholder="Password"
+                                secureTextEntry={!showPassword}
+                                onChangeText={handleChange('password')}
+                                value={values.password}
+                            />
+                            <TouchableOpacity
+                                onPress={() => setShowPassword(!showPassword)}
+                                style={styles.eyeIcon}
+                            >
+                                <Icon name={showPassword ? 'eye' : 'eye-slash'} size={20} />
+                            </TouchableOpacity>
+                        </View>
                         {touched.password && errors.password && (
                             <Text style={styles.errorText}>{errors.password}</Text>
                         )}
@@ -86,10 +97,18 @@ const LoginScreen = () => {
                         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                             <Text style={styles.buttonText}>Login</Text>
                         </TouchableOpacity>
+
+                        <View>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('Register')}
+                            >
+                                <Text style={styles.alreadyHave}>Don't have an account? <Text style={styles.loginCtn}>Sign Up</Text></Text>
+                            </TouchableOpacity>
+                        </View>
                     </>
                 )}
             </Formik>
-        </View>
+        </View >
     );
 };
 
@@ -108,8 +127,13 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 50,
         color: '#fff', // White text color
-        marginBottom: 20,
+        marginBottom: 10,
     },
+    description: {
+        fontSize: 16,
+        color: '#f2f2f2', // White text color
+        marginBottom: 20,
+      },
     input: {
         width: '80%',
         backgroundColor: '#fff', // White input background
@@ -132,11 +156,36 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 10
     },
+    passwordContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        height: 60,
+        width: '80%'
+    },
+    passwordInput: {
+        flex: 1,
+        padding: 10,
+    },
+    eyeIcon: {
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+        position: 'absolute',
+        alignItems: 'center',
+        right: 0,
+    },
     buttonText: {
         color: '#fff', // White text color
         textAlign: 'center',
         fontSize: 16,
     },
+    alreadyHave: {
+        color: 'white',
+        fontSize: 16,
+        marginTop: 20
+    },
+    loginCtn: {
+        color: 'blue',
+    }
 });
 
 export default LoginScreen;
