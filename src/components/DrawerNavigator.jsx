@@ -1,18 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/app/HomeScreen';
 import Logout from './Logout';
 
+
+
 const Drawer = createDrawerNavigator();
+
+
+
+  
 const DrawerNavigator = () => {
     return (
         <Drawer.Navigator screenOptions={{
             drawerInactiveTintColor: 'white',
             drawerStyle: {
                 backgroundColor: '#222',
+                paddingTop: 20,
             },
-        }}>
+        }}  
+        >
             <Drawer.Screen name="Main" component={HomeScreen}
                 options={{
                     title: 'Pinmbo',
@@ -108,19 +116,36 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 16,
         top: 100
-    }
+    },
+    image: {
+        width: 500,
+        height: 500,
+        marginBottom: 20,
+    },
 })
 
 
 const About = () => {
-    return (<Text style={styles.textLable}>Under Maintenance</Text>)
+    return (<Image
+        source={require('../assets/under-main.png')} // Replace with your image source
+        style={styles.image}
+    />)
 }
 const MyProfile = () => {
-    return (<Text style={styles.textLable}>Under Maintenance</Text>)
+    return (<Image
+        source={require('../assets/under-main.png')} // Replace with your image source
+        style={styles.image}
+    />)
 }
 const PaymentHistory = () => {
-    return (<Text style={styles.textLable}>Under Maintenance</Text>)
+    return (<Image
+        source={require('../assets/under-main.png')} // Replace with your image source
+        style={styles.image}
+    />)
 }
 const Settings = () => {
-    return (<Text style={styles.textLable}>Under Maintenance</Text>)
+    return (<Image
+        source={require('../assets/under-main.png')} // Replace with your image source
+        style={styles.image}
+    />)
 }
