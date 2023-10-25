@@ -12,7 +12,7 @@ import Carousel from '../shared/Carousel';
 const CARD_WIDTH = sizes.width / 2 - (spacing.l + spacing.l / 2);
 const CARD_HEIGHT = 220;
 
-const WatchingForCarousel = ({ list }) => {
+const LeftToRightCorousel = ({ list }) => {
   const navigation = useNavigation();
   return (
     <Carousel
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    left: -20,
+    left: 20,
     top: 20,
     marginBottom: 20
   },
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    marginLeft: spacing.l,
-    marginBottom: spacing.l,
+    marginRight: spacing.l,
+    // marginBottom: spacing.l,
     backgroundColor: '#353b48',
   },
   media: {
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WatchingForCarousel;
+export default LeftToRightCorousel;

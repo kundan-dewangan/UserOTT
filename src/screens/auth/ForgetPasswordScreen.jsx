@@ -39,9 +39,7 @@ const ForgetPasswordScreen = () => {
     }
 
     const handleLogin = (values) => {
-        console.log("list is ::", list)
         const checkAuth = list?.filter((item) => (item.email === values.email))
-        console.log("What is ::", checkAuth)
         if (checkAuth.length) {
             setIsCorrect(true)
             setIsPass(checkAuth)

@@ -13,6 +13,7 @@ import TrendingCarousel from '../../components/Home/TrendingCarousel'
 import WatchingForCarousel from '../../components/Home/WatchingForCarousel'
 import CrimeChroniclesCarousel from '../../components/Home/CrimeChroniclesCarousel'
 import AdventureEscapadesCarousle from '../../components/Home/AdventureEscapadesCarousle'
+import LeftToRightCorousel from '../../components/Home/LeftToRightCarousel'
 
 const HomeScreen = () => {
 
@@ -88,12 +89,13 @@ const HomeScreen = () => {
                 />
                 <TopPlacesCarousel list={popularGenreList} favChangeHandler={favChangeHandler} />
 
+
                 <SectionHeader
                     title="Music Mania"
                     buttonTitle=""
                     onPress={false}
                 />
-                <MyListCarousel list={musicManiaList} />
+                <LeftToRightCorousel list={musicManiaList} />
 
 
                 <SectionHeader
@@ -101,7 +103,7 @@ const HomeScreen = () => {
                     buttonTitle=""
                     onPress={false}
                 />
-                <TrendingCarousel list={horrorMysList} />
+                <LeftToRightCorousel list={horrorMysList} />
 
 
                 <SectionHeader
@@ -109,7 +111,7 @@ const HomeScreen = () => {
                     buttonTitle=""
                     onPress={false}
                 />
-                <WatchingForCarousel list={sciFiList} />
+                <LeftToRightCorousel list={sciFiList} />
 
 
                 <SectionHeader
@@ -117,7 +119,7 @@ const HomeScreen = () => {
                     buttonTitle=""
                     onPress={false}
                 />
-                <AdventureEscapadesCarousle list={adventureEscList} />
+                <LeftToRightCorousel list={adventureEscList} />
 
 
                 <SectionHeader
@@ -125,10 +127,10 @@ const HomeScreen = () => {
                     buttonTitle=""
                     onPress={false}
                 />
-                <CrimeChroniclesCarousel list={crimeChroList} />
+                <LeftToRightCorousel list={crimeChroList} />
 
 
-                <SectionHeader
+                {/* <SectionHeader
                     title="All List"
                     buttonTitle=""
                     onPress={false}
@@ -141,7 +143,7 @@ const HomeScreen = () => {
                         thumbnail={item?.thumbnail}
                         url={item?.url}
                         onPress={() => handleClick(item)} />)
-                })}
+                })} */}
 
             </ScrollView>
         </View>
