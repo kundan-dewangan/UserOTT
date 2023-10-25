@@ -3,23 +3,20 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } fro
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
-import { headerPayload, useCounter } from '../../utils/utils';
+import { headerPayload } from '../../utils/utils';
 import axios from 'axios';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required'),
 });
 
-const LoginScreen = () => {
+const ForgetPasswordScreen = () => {
 
     const navigation = useNavigation();
     const [list, setList] = useState([])
-    const [showPassword, setShowPassword] = useState(false);
-
-    const { login } = useCounter();
+    const [isCorrect, setIsCorrect] = useState(false)
+    const [isPass, setIsPass] = useState([])
 
     useEffect(() => {
         getData();
@@ -42,12 +39,14 @@ const LoginScreen = () => {
     }
 
     const handleLogin = (values) => {
-        const checkAuth = list?.some((item) => (item.email === values.email) && (item.password === values.password))
-        if (checkAuth) {
-            login()
-            navigation.navigate('Home')
+        console.log("list is ::", list)
+        const checkAuth = list?.filter((item) => (item.email === values.email))
+        console.log("What is ::", checkAuth)
+        if (checkAuth.length) {
+            setIsCorrect(true)
+            setIsPass(checkAuth)
         } else {
-            Alert.alert("Email and password is invalid")
+            Alert.alert("Email not found")
         }
     };
 
@@ -57,8 +56,8 @@ const LoginScreen = () => {
                 source={require('../../assets/login.png')} // Replace with your image source
                 style={styles.image}
             />
-            <Text style={styles.title}>Login</Text>
-            <Text style={styles.description}>Please sign in to continue</Text>
+            <Text style={styles.title}>Forget Password</Text>
+            <Text style={styles.description}>You will receive instructions for reseting your password.</Text>
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
@@ -74,40 +73,17 @@ const LoginScreen = () => {
                         />
                         {touched.email && errors.email && (
                             <Text style={styles.errorText}>{errors.email}</Text>
-                        )}
-                        <View style={styles.passwordContainer}>
-                            <TextInput
-                                style={[styles.input, styles.passwordInput]}
-                                placeholder="Password"
-                                secureTextEntry={!showPassword}
-                                onChangeText={handleChange('password')}
-                                value={values.password}
-                            />
-                            <TouchableOpacity
-                                onPress={() => setShowPassword(!showPassword)}
-                                style={styles.eyeIcon}
-                            >
-                                <Icon name={showPassword ? 'eye' : 'eye-slash'} size={20} />
-                            </TouchableOpacity>
-                        </View>
-                        {touched.password && errors.password && (
-                            <Text style={styles.errorText}>{errors.password}</Text>
-                        )}
+                        )}                       
 
                         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                            <Text style={styles.buttonText}>Login</Text>
+                            <Text style={styles.buttonText}>Forget Password</Text>
                         </TouchableOpacity>
 
+                        {isCorrect && <Text style={styles.passShow}>Your password is : {isPass[0]?.password}</Text>}
+
                         <View>
-                            <TouchableOpacity onPress={() => navigation.navigate('ForgetPassword')} >
-                                <Text style={styles.alreadyHave}><Text style={styles.loginCtn}>Forget Password!</Text></Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View>
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('Register')}
-                            >
-                                <Text style={styles.alreadyHave}>Don't have an account? <Text style={styles.loginCtn}>Sign Up</Text></Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('Login')} >
+                                <Text style={styles.alreadyHave}>Go to <Text style={styles.loginCtn}>Login</Text></Text>
                             </TouchableOpacity>
                         </View>
                     </>
@@ -190,7 +166,12 @@ const styles = StyleSheet.create({
     },
     loginCtn: {
         color: 'blue',
+    },
+    passShow:{
+        color: 'white',
+        fontSize: 22,
+        marginTop: 20
     }
 });
 
-export default LoginScreen;
+export default ForgetPasswordScreen;

@@ -10,6 +10,7 @@ import WelcomeScreen from './src/screens/auth/WelcomeScreen';
 import DetailScreen from './src/screens/app/DetailScreen';
 import { AuthContext } from './src/context/AuthContext';
 import DrawerNavigator from './src/components/DrawerNavigator';
+import ForgetPasswordScreen from './src/screens/auth/ForgetPasswordScreen';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -61,6 +62,9 @@ const App = () => {
             // headerTransparent: true,
           }} />
           <Stack.Screen name="Register" component={RegisterScreen} options={{
+            headerShown: false
+          }} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} options={{
             headerShown: false
           }} />
           <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
