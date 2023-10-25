@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#222', // Dark background color
   },
   image: {
-    width: 500,
-    height: 300,
+    width: 510,
+    height: 310,
     marginBottom: 20,
   },
   title: {
