@@ -30,8 +30,8 @@ const LeftToRightCorousel = ({ list }) => {
             </SharedElement>
             <CardContent style={styles.content}>
               <View style={styles.titleBox}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.location}>{item?.description?.length > 10 ? item?.description.slice(0, 10) + "..." : item?.description}</Text>
+                <Text style={styles.title}>{item?.title?.length > 16 ? item?.title.slice(0, 16) + "..." : item?.title}</Text>
+                <Text style={styles.location}>{item?.description?.length > 16 ? item?.description.slice(0, 16) + "..." : item?.description}</Text>
               </View>
               {/* <FavoriteButton onPress={() => {}} /> */}
             </CardContent>

@@ -14,11 +14,11 @@ const WelcomeScreen = () => {
       />
 
       {/* Welcome Title */}
-      <Text style={styles.title}>Welcome to OTT Platform</Text>
+      <Text style={styles.title}>Welcome to Pinmbo</Text>
 
       {/* Description */}
       <Text style={styles.description}>
-      OTT platforms deliver streaming content over the internet, offering diverse entertainment choices like movies, series, and live TV
+      Pinmbo deliver streaming content over the internet, offering diverse entertainment choices like movies, series, and live TV
       </Text>
 
       {/* Buttons */}

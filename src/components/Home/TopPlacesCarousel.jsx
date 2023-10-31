@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {colors, sizes} from '../../constants/theme';
-import {useNavigation} from '@react-navigation/native';
-import {SharedElement} from 'react-navigation-shared-element';
+import { Text, View, StyleSheet } from 'react-native';
+import { colors, sizes } from '../../constants/theme';
+import { useNavigation } from '@react-navigation/native';
+import { SharedElement } from 'react-navigation-shared-element';
 import Carousel from '../shared/Carousel';
 import Card from '../shared/Card/Card';
 import CardMedia from '../shared/Card/CardMedia';
@@ -10,12 +10,12 @@ import CardFavoriteIcon from '../shared/Card/CardFavoriteIcon';
 
 const CARD_HEIGHT = 200;
 
-const TopPlacesCarousel = ({list, favChangeHandler}) => {
+const TopPlacesCarousel = ({ list, favChangeHandler }) => {
   const navigation = useNavigation();
   return (
     <Carousel
       items={list}
-      renderItem={({item, style}) => {
+      renderItem={({ item, style }) => {
         return (
           <Card
             style={[styles.card, style]}
@@ -30,7 +30,7 @@ const TopPlacesCarousel = ({list, favChangeHandler}) => {
               <CardMedia source={item?.thumbnail} borderBottomRadius />
             </SharedElement>
             <View style={styles.titleBox}>
-              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.title}>{item?.title?.length > 26 ? item?.title.slice(0, 26) + "..." : item?.title}</Text>
               {/* <Text style={styles.location}>{item.location}</Text> */}
             </View>
           </Card>

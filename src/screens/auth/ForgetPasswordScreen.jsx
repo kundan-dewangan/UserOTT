@@ -50,10 +50,10 @@ const ForgetPasswordScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Image
+            {/* <Image
                 source={require('../../assets/login.png')} // Replace with your image source
                 style={styles.image}
-            />
+            /> */}
             <Text style={styles.title}>Forget Password</Text>
             <Text style={styles.description}>You will receive instructions for reseting your password.</Text>
             <Formik
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     title: {
-        fontSize: 50,
+        fontSize: 36,
         color: '#fff', // White text color
         marginBottom: 10,
     },

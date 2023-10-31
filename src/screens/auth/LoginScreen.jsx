@@ -53,10 +53,10 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Image
+            {/* <Image
                 source={require('../../assets/login.png')} // Replace with your image source
                 style={styles.image}
-            />
+            /> */}
             <Text style={styles.title}>Login</Text>
             <Text style={styles.description}>Please sign in to continue</Text>
             <Formik

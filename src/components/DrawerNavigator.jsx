@@ -149,3 +149,9 @@ const Settings = () => {
         style={styles.image}
     />)
 }
+const TestSettings = () => {
+    return (<Image
+        source={require('../assets/under-main.png')} // Replace with your image source
+        style={styles.image}
+    />)
+}

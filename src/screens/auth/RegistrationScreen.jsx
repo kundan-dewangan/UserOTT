@@ -44,10 +44,10 @@ const RegisterScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image
+      {/* <Image
         source={require('../../assets/register.png')} // Replace with your image source
         style={styles.image}
-      />
+      /> */}
       <Text style={styles.title}>Sign Up</Text>
       <Text style={styles.description}>Sign Up as a New User</Text>
       <Formik
