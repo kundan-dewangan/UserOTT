@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 import { headerPayload } from '../../utils/utils';
 import axios from 'axios';
+import emailjs from '@emailjs/browser';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
@@ -15,10 +16,10 @@ const ForgetPasswordScreen = () => {
 
     const navigation = useNavigation();
     const [list, setList] = useState([])
-    const [isCorrect, setIsCorrect] = useState(false)
-    const [isPass, setIsPass] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
         getData();
     }, [])
 
@@ -39,13 +40,36 @@ const ForgetPasswordScreen = () => {
     }
 
     const handleLogin = (values) => {
+        setIsLoading(true)
         const checkAuth = list?.filter((item) => (item.email === values.email))
         if (checkAuth.length) {
-            setIsCorrect(true)
-            setIsPass(checkAuth)
+            emailSend(values, checkAuth[0]?.fullName, checkAuth[0]?.password)
         } else {
-            Alert.alert("Email not found")
+            Alert.alert("Email not found at our database")
         }
+    };
+
+    const emailSend = (values, fullName, description) => {
+        let templateParams = {
+            to_name: fullName,
+            to_email: values.email,
+            from_name: 'Pinmbo',
+            message: description,
+        };
+        // console.log('ENVIADOS: ', JSON.stringify(templateParams));
+        emailjs.send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, templateParams).then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            Alert.alert("Email successfully sent check your email")
+            navigation.navigate('Login')
+            setIsLoading(false)
+          },
+          function (error) {
+            console.log('FAILED...', error);
+            Alert.alert("Somethink wrong while sent email")
+          }
+        );
+        setIsLoading(false)
     };
 
     return (
@@ -71,16 +95,14 @@ const ForgetPasswordScreen = () => {
                         />
                         {touched.email && errors.email && (
                             <Text style={styles.errorText}>{errors.email}</Text>
-                        )}                       
+                        )}
 
                         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                             <Text style={styles.buttonText}>Forget Password</Text>
                         </TouchableOpacity>
 
-                        {isCorrect && <Text style={styles.passShow}>Your password is : {isPass[0]?.password}</Text>}
-
                         <View>
-                            <TouchableOpacity onPress={() => navigation.navigate('Login')} >
+                            <TouchableOpacity onPress={() => navigation.navigate('Login')} disabled={isLoading}>
                                 <Text style={styles.alreadyHave}>Go to <Text style={styles.loginCtn}>Login</Text></Text>
                             </TouchableOpacity>
                         </View>
@@ -112,7 +134,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#f2f2f2', // White text color
         marginBottom: 20,
-      },
+    },
     input: {
         width: '80%',
         backgroundColor: '#fff', // White input background
@@ -165,7 +187,7 @@ const styles = StyleSheet.create({
     loginCtn: {
         color: 'blue',
     },
-    passShow:{
+    passShow: {
         color: 'white',
         fontSize: 22,
         marginTop: 20

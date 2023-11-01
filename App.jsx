@@ -14,7 +14,7 @@ import ForgetPasswordScreen from './src/screens/auth/ForgetPasswordScreen';
 
 const App = () => {
   const Stack = createStackNavigator();
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   const login = () => {
     setIsAuth(true);
